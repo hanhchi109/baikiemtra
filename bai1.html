@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số nguyên tố và tổng</title>
+</head>
+<body>
+    <h1>Liệt kê số nguyên tố và tính tổng trong khoảng a đến b</h1>
+    <form id="primeForm">
+        <label for="a">a:</label>
+        <input type="number" id="a" required><br>
+
+        <label for="b"></label> b:</label>
+        <input type="number" id="b" required><br>
+
+        <button type="button" onclick="listPrimesAndSum()">Tính tổng số nguyên tố</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function listPrimesAndSum() {
+            const a = parseInt(document.getElementById('a').value);
+            const b = parseInt(document.getElementById('b').value);
+
+            if (a >= b) {
+                alert('Vui lòng nhập số a nhỏ hơn b.');
+                return;
+            }
+
+            let primeList = [];
+            let primeSum = 0;
+
+            for (let i = a; i <= b; i++) {
+                if (isPrime(i)) {
+                    primeList.push(i);
+                    primeSum += i;
+                }
+            }
+
+            if (primeList.length > 0) {
+                document.getElementById('result').innerHTML = `<p>Số nguyên tố từ ${a} đến ${b} là: ${primeList.join(', ')}</p><p>Tổng số nguyên tố trong khoảng l: ${primeSum}</p>`;
+            } else {
+                document.getElementById('result').innerHTML = `<p>Không có số nguyên tố trong khoảng từ ${a} đến ${b}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+function numberOneTriangle(n) {
+    if (n < 1 || n > 10) {
+        document.write("Vui lòng nhập một số nguyên trong khoảng từ 1 đến 10.");
+        return;
+    }
+
+    for (let i = 1; i <= n; i++) {
+        let row = "*".repeat(i);
+        document.write(row + "<br>");
+    }
+}
+
+numberOneTriangle(7);
+    </script>
+
+</body>
+</html>
